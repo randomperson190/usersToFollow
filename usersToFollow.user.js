@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.12
+// @version      0.13
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -30,7 +30,6 @@ alexiaperez._
 sofibaudraco
 ludrdriguez
 pauilio_
-pauilio_
 nahii_herrera
 sool.portilloo
 luuzfusto
@@ -51,23 +50,12 @@ shaiel__
 nikiivega
 camiialbarracin_
 veroayoroaj
-nattypereyra_
-brenavaca
-morecampoy
-daiianaa._5
-daiianaa._5
-maairepic
 zoesarubi_
 luaguiirre_
 she.is.lolaa
-luaguiirre_
 lourdessolis38
 correaacele
 magacentteno
-maca_cuevass
-cattapereyra
-abrilautunno
-shaiel__
 melina.boch
 briortegga
 danaagostinaa
@@ -83,7 +71,6 @@ catluquez
 _araa08
 braunl_
 moreparera_
-micaorosco_
 micaorosco_
 milydomiinguez
 mmorena.1
@@ -124,7 +111,106 @@ melany.rocio2
 guadaa_nicole
 biangiovannini
 vicky__gimenez0
-_mariaperalta_`
+_mariaperalta_
+delfina.villegas
+bustosmily.2
+isaa_marrone
+melalmiron1
+tamiichavezzz
+gnerikaa
+lugonzaaleez
+micahernandezl
+sofirodrriguez
+aleesspinosa
+leidipa__
+nickytorrado
+agustina.arayaa
+coniii.caro
+zooe.a_
+ani_ruizz
+samiracardosso
+ailuu.tt
+roobelenn1
+fatulina
+vikysanfe_
+luci_.torres
+zelmigarcia
+antto_montenegro
+martuu_olmos15
+lunimara_
+antoomarquez__
+milidominguez16
+vicky.zacco
+ailynmilagros_
+_guadagaitan
+zoedelrioo
+martu_pardo
+martineezmili_
+giiulialvarez
+rooc1o
+delfizela
+_rociooabigail
+guadasisa
+guadimontero__
+patopatoyrepato
+suritamel
+piafelicetti_
+aye_aguss
+luliipalacios.37
+ssofitorres1
+ludmiisegura
+mileebobbio
+caro.caastillo
+_mmilagross_
+agushalbr
+mel_m.aredes
+luuz.vict
+camibbeleen
+ariiiaaa
+fl__orce
+biancamagaali
+cariiamaro
+zoeecattaneo
+milii_aylenn
+lucilamagali00
+_soyathina_
+zairaluquez_
+viaany_ema
+camilaespinosa09
+more.corzini
+abrilcorreaw
+villalbacande__
+solvbarbozaa
+caroyeruna
+ayelenlucero_
+pilidiazp_
+florfranzese
+brisaailennn_
+laaramacieel
+miaa.alfonso
+abalosari
+mendezzbri
+jazcarnevale
+camichiappara_
+may.zela_
+tutii.gutierrez
+jazduarte__
+abrilcorreaw2
+miluu.pogonza
+brisanaahir
+sfelicamm
+lal.ilaura
+_abbiolivera
+mara.ssari
+iara_ailiin
+juliabriil.12
+biaan_ojeda
+lei_jimenez
+briisa_garay04
+jucentofanti
+valuu_roman
+sofivirg14
+lili.melony`
 
 function main() {
         let usersToFollow = data.split("\n");
