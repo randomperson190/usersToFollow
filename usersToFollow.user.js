@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/mygithubaccount/test/raw/master/test.user.js
@@ -139,7 +139,9 @@ function main() {
             for (let i in usersToFollow) {
                 let currentUser = usersToFollow[i];
                 if (currentUserPage == currentUser) {
+                    console.log("• Redirigiendo en 5 segundos ...");
                     setTimeout(function() {
+                        console.log("• Redirigiendo");
                         window.location.href = "https://www.instagram.com/" + usersToFollow[i + 1];
                     }, 5000);
                 }
