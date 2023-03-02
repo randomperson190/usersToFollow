@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/mygithubaccount/test/raw/master/test.user.js
@@ -160,6 +160,6 @@ setInterval(main, 1000);
 setTimeout(function() {
     let xpath = "//div[text()='Follow']";
     let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    console.log("♦ Followeando");
+    console.log("• Followeando");
     matchingElement.click();
 }, 10000);
