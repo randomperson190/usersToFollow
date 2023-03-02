@@ -22,12 +22,11 @@ function findNodeByInnerHTML(nodelist, innerHTML) {
     }
 }
 function main() {
-    //fetch("https://gist.githubusercontent.com/randomperson190/16193ea9f1afb7619d309447d44ccf17/raw/").then(function(response) {
-    //    return response.text();
-    //}).then(function(data) {
-    //    console.log(data);
-        //let usersToFollow = data.split("\n");
-        let usersToFollow = ["biancadelfi43", "zoe.vipp1", "joseffina.morales", "fanxpiotaa"];
+        let data = `biancadelfi43
+        zoe.vipp1
+        joseffina.morales
+        fanxpiotaa`
+        let usersToFollow = data.split("\n");
         let date = new Date;
         let hours = date.getHours();
         let minutes = date.getMinutes();
