@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/mygithubaccount/test/raw/master/test.user.js
@@ -45,9 +45,6 @@ function main() {
                 }
             }
         }
-    //}).catch(function(err) {
-    //    console.log('Fetch Error :-S', err);
-    //});
 }
 
 function findNodeByInnerHTML2(nodelist, innerHTML) {
