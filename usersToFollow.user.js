@@ -136,6 +136,13 @@ function main() {
         let currentTime = hours + ":" + minutes + ":" + seconds;
         console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
         if (seconds == 0 && (minutes == 0 || minutes == 30)) {
+            if (usersToFollow.includes(currentUserPage) == false) {
+                console.log("• Redirigiendo en 5 segundos ...");
+                setTimeout(function() {
+                    console.log("• Redirigiendo");
+                    window.location.href = "https://www.instagram.com/" + usersToFollow[i + 1];
+                }, 5000);
+            }
             for (let i in usersToFollow) {
                 let currentUser = usersToFollow[i];
                 if (currentUserPage == currentUser) {
