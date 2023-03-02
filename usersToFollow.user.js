@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/mygithubaccount/test/raw/master/test.user.js
@@ -140,7 +140,7 @@ function main() {
                 console.log("• Redirigiendo en 5 segundos ...");
                 setTimeout(function() {
                     console.log("• Redirigiendo");
-                    window.location.href = "https://www.instagram.com/" + usersToFollow[i + 1];
+                    window.location.href = "https://www.instagram.com/" + usersToFollow[0];
                 }, 5000);
             }
             for (let i in usersToFollow) {
@@ -149,7 +149,7 @@ function main() {
                     console.log("• Redirigiendo en 5 segundos ...");
                     setTimeout(function() {
                         console.log("• Redirigiendo");
-                        window.location.href = "https://www.instagram.com/" + usersToFollow[i + 1];
+                        window.location.href = "https://www.instagram.com/" + usersToFollow[parseInt(i) + 1];
                     }, 5000);
                 }
             }
