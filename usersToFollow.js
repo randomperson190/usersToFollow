@@ -36,7 +36,7 @@ function main() {
         let followElement = findNodeByInnerHTML(document.querySelectorAll('div'), 'Follow');
         followElement.click();
         let currentTime = hours + ":" + minutes + ":" + seconds;
-        //console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
+        console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
         if (seconds == 0 && (minutes == 0 || minutes == 30)) {
             for (let i in usersToFollow) {
                 let currentUser = usersToFollow[i];
