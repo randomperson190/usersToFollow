@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  try to take over the world!
 // @author       You
-// @updateURL    https://github.com/mygithubaccount/test/raw/master/test.user.js
-// @downloadURL  https://github.com/mygithubaccount/test/raw/master/test.user.js
+// @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
+// @downloadURL  https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
 // @match        https://www.instagram.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=instagram.com
 // @grant        GM_addElement
