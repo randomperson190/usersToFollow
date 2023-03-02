@@ -27,7 +27,7 @@ function main() {
     //}).then(function(data) {
     //    console.log(data);
         //let usersToFollow = data.split("\n");
-        let usersToFollow = ["biancadelfi43", "zoe.vipp1", "joseffina.morales"];
+        let usersToFollow = ["biancadelfi43", "zoe.vipp1", "joseffina.morales", "fanxpiotaa"];
         let date = new Date;
         let hours = date.getHours();
         let minutes = date.getMinutes();
