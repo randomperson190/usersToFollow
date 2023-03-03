@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.15
+// @version      0.16
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -22,9 +22,7 @@ function findNodeByInnerHTML(nodelist, innerHTML) {
     }
 }
 
-const data = `nahii_herrera
-sool.portilloo
-luuzfusto
+const data = `luuzfusto
 danigutiierrez_
 alegabriiel_
 seleceballos_
