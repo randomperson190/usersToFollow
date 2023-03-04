@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.19
+// @version      0.20
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -1814,7 +1814,7 @@ function main() {
         // followElement.click();
         // let currentTime = hours + ":" + minutes + ":" + seconds;
         // console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
-        if (seconds == 0 && (minutes == 0 || minutes == 30)) {
+        if (seconds == 0 && (minutes == 0 || minutes == 00)) {
             if (usersToFollow.includes(currentUserPage) == false) {
                 // console.log("• Redirigiendo en 5 segundos ...");
                 setTimeout(function() {
