@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.20
+// @version      0.21
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -16,8 +16,7 @@ function getCurrentURL () {
     return window.location.href;
 }
 
-const data = `morecampoy
-daiianaa._5
+const data = `daiianaa._5
 maairepic
 maca_cuevass
 valeenpalma
