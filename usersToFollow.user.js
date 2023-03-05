@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.22
+// @version      0.23
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -12,34 +12,12 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-function getCurrentURL () {
+function getCurrentURL() {
     return window.location.href;
 }
 
-const data = `daiianaa._5
-maairepic
-maca_cuevass
-valeenpalma
-cattapereyra
-abrilautunno
-shaiel__
-nikiivega
-camiialbarracin_
-veroayoroaj
-zoesarubi_
-luaguiirre_
-she.is.lolaa
-lourdessolis38
-correaacele
-magacentteno
-melina.boch
-briortegga
-danaagostinaa
-psyccony
-agus_surita
-sereepesaresi_
-agus_berenguel
-ludmi_fuentes
+function getListOfUsers() {
+const data = `ludmi_fuentes
 _sofi.correa
 cande.yanivelli
 tomaslorenzoma11037
@@ -1793,11 +1771,12 @@ meeel.castro1
 kiarajasmine_sl
 whossmaca
 azuuzambra`
+return data.split("\n");
+}
 
 // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 // ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
-const usersToFollow = data.split("\n");
 function main() {
         // let usersToFollow = data.split("\n");
         // for (let x in usersToFollow) {
@@ -1814,6 +1793,7 @@ function main() {
         // let currentTime = hours + ":" + minutes + ":" + seconds;
         // console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
         if (seconds == 0 && (minutes == 0 || minutes == 00)) {
+            let usersToFollow = getListOfUsers();
             if (usersToFollow.includes(currentUserPage) == false) {
                 // console.log("• Redirigiendo en 5 segundos ...");
                 setTimeout(function() {
