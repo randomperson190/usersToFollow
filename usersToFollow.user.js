@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.23
+// @version      0.24
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -20,7 +20,6 @@ function getListOfUsers() {
 const data = `ludmi_fuentes
 _sofi.correa
 cande.yanivelli
-tomaslorenzoma11037
 catluquez
 _araa08
 braunl_
