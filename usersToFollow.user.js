@@ -7228,58 +7228,61 @@ function esHoraEspecial(hours, minutes, seconds) {
 }
     
 function main2() {
-        // let usersToFollow = data.split("\n");
-        // for (let x in usersToFollow) {
-        //    usersToFollow[x] = usersToFollow[x].replaceAll(" ", "")
-        //    usersToFollow[x] = usersToFollow[x].replaceAll("%20", "")
-        // }
-        let date = new Date;
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
-        // let followElement = findNodeByInnerHTML(document.querySelectorAll('div'), 'Follow');
-        // followElement.click();
-        // let currentTime = hours + ":" + minutes + ":" + seconds;
-        // console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
-        if (seconds == 0 && ((minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
-            let usersToFollow = getListOfUsers();
-            if (usersToFollow.includes(currentUserPage) == false) {
+    console.log("main2");
+    // let usersToFollow = data.split("\n");
+    // for (let x in usersToFollow) {
+    //    usersToFollow[x] = usersToFollow[x].replaceAll(" ", "")
+    //    usersToFollow[x] = usersToFollow[x].replaceAll("%20", "")
+    // }
+    let date = new Date;
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
+    // let followElement = findNodeByInnerHTML(document.querySelectorAll('div'), 'Follow');
+    // followElement.click();
+    // let currentTime = hours + ":" + minutes + ":" + seconds;
+    // console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
+    if (seconds == 0 && ((minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
+        let usersToFollow = getListOfUsers();
+        if (usersToFollow.includes(currentUserPage) == false) {
+            // console.log("• Redirigiendo en 5 segundos ...");
+            //setTimeout(function() {
+                // console.log("• Redirigiendo");
+            window.location.href = "https://www.instagram.com/" + usersToFollow[0];
+            // }, 5000);
+        }
+        for (let i in usersToFollow) {
+            let currentUser = usersToFollow[i];
+            if (currentUserPage == currentUser) {
                 // console.log("• Redirigiendo en 5 segundos ...");
-                //setTimeout(function() {
+                // setTimeout(function() {
                     // console.log("• Redirigiendo");
-                window.location.href = "https://www.instagram.com/" + usersToFollow[0];
+                window.location.href = "https://www.instagram.com/" + usersToFollow[parseInt(i) + 1];
                 // }, 5000);
             }
-            for (let i in usersToFollow) {
-                let currentUser = usersToFollow[i];
-                if (currentUserPage == currentUser) {
-                    // console.log("• Redirigiendo en 5 segundos ...");
-                    // setTimeout(function() {
-                        // console.log("• Redirigiendo");
-                    window.location.href = "https://www.instagram.com/" + usersToFollow[parseInt(i) + 1];
-                    // }, 5000);
-                }
-            }
         }
+    }
 }
 
 function waitTillPageLoad() {
-        let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        if (followElement != null) {
-            main()
-        }
-        let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        if (requestedElement != null) {
-            main()
-        }
-        let followingElement = document.evaluate("//div[text()='Following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        if (followingElement != null) {
-            main()
-        }
+    console.log("waitTillPageLoad");
+    let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (followElement != null) {
+        main()
+    }
+    let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (requestedElement != null) {
+        main()
+    }
+    let followingElement = document.evaluate("//div[text()='Following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (followingElement != null) {
+        main()
+    }
 }
 
 function main() {
+    console.log("main");
     clearInterval(intervalWaitTillPageLoad);
     // console.log("• Followeando");
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
