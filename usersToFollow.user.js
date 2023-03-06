@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.28
+// @version      0.29
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7219,8 +7219,8 @@ return data.split("\n");
 
 function esHoraEspecial(h, m) {
     let hours = String(h);
-    let minutes = String(minutes);
-    let momentoActual = h + m;
+    let minutes = String(m);
+    let momentoActual = hours + minutes;
     let momentosEspeciales = [];
     if (seconds == 0) {
         return momentosEspeciales.includes(momentoActual);
