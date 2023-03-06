@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.31
+// @version      0.32
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7228,7 +7228,7 @@ function esHoraEspecial(h, m) {
 }
     
 function main2() {
-    console.log("main2");
+    // console.log("main2");
     // let usersToFollow = data.split("\n");
     // for (let x in usersToFollow) {
     //    usersToFollow[x] = usersToFollow[x].replaceAll(" ", "")
