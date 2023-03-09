@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.32
+// @version      0.33
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7228,61 +7228,51 @@ function esHoraEspecial(h, m) {
 }
     
 function main2() {
-    // console.log("main2");
-    // let usersToFollow = data.split("\n");
-    // for (let x in usersToFollow) {
-    //    usersToFollow[x] = usersToFollow[x].replaceAll(" ", "")
-    //    usersToFollow[x] = usersToFollow[x].replaceAll("%20", "")
-    // }
     let date = new Date;
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
-    // let followElement = findNodeByInnerHTML(document.querySelectorAll('div'), 'Follow');
-    // followElement.click();
-    // let currentTime = hours + ":" + minutes + ":" + seconds;
-    // console.log("currentUserPage = " + currentUserPage + " || currentTime = " + currentTime)
     if (seconds == 0 && ((minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
         let usersToFollow = getListOfUsers();
         if (usersToFollow.includes(currentUserPage) == false) {
-            // console.log("• Redirigiendo en 5 segundos ...");
-            //setTimeout(function() {
-                // console.log("• Redirigiendo");
             window.location.href = "https://www.instagram.com/" + usersToFollow[0];
-            // }, 5000);
         }
         for (let i in usersToFollow) {
             let currentUser = usersToFollow[i];
             if (currentUserPage == currentUser) {
-                // console.log("• Redirigiendo en 5 segundos ...");
-                // setTimeout(function() {
-                    // console.log("• Redirigiendo");
                 window.location.href = "https://www.instagram.com/" + usersToFollow[parseInt(i) + 1];
-                // }, 5000);
             }
         }
     }
 }
 
 function waitTillPageLoad() {
-    console.log("waitTillPageLoad");
+    // console.log("waitTillPageLoad");
+    waitTillPageLoadCounter += 1;
+    if (waitTillPageLoadCounter == 999999) {
+        location.reload();
+    }
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (followElement != null) {
-        main()
+        main();
     }
     let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (requestedElement != null) {
-        main()
+        main();
     }
     let followingElement = document.evaluate("//div[text()='Following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (followingElement != null) {
-        main()
+        main();
+    }
+    let reloadPageElement = document.evaluate("//div[text()='Reload page']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (reloadPageElement != null) {
+        reloadPageElement.click();
     }
 }
 
 function main() {
-    console.log("main");
+    // console.log("main");
     clearInterval(intervalWaitTillPageLoad);
     // console.log("• Followeando");
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -7292,8 +7282,8 @@ function main() {
         followElement.click();
     }
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
+    let usersToFollow = getListOfUsers();
     if (followingElement != null || requestedElement != null) {
-        let usersToFollow = getListOfUsers();
         if (usersToFollow.includes(currentUserPage) == false) {
             window.location.href = "https://www.instagram.com/" + usersToFollow[0];
         }
@@ -7304,12 +7294,28 @@ function main() {
             }
         }
     } else {
+        let usersToFollowLength = usersToFollow.length();
+        let messageElement = document.evaluate("//div[text()='Message']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        if (usersToFollow.includes(currentUserPage) == false) {
+            document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
+            if (messageElement != null) {
+               messageElement.innerText = currentUserPage + " - ?/" + String(usersToFollowLength);
+            }
+        } else {
+            for (let i in usersToFollow) {
+            let currentUser = usersToFollow[i];
+            if (currentUserPage == currentUser) {
+                document.title = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                if (messageElement != null) {
+                    messageElement.innerText = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                }
+            }
+        }
         setInterval(main2, 1000);
     }
 }
 
-// console.log("• Followeando en 45 ...");
-
+let waitTillPageLoadCounter = 0;
 const intervalWaitTillPageLoad = setInterval(waitTillPageLoad, 1000);
 
 
