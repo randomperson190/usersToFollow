@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.41
+// @version      0.43
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7269,9 +7269,21 @@ function main() {
     } else {
         let usersToFollowLength = usersToFollow.length;
         let messageElement = document.evaluate("//div[text()='Message']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        let postsElement = document.evaluate("//span[text()=' posts']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        let followersElement = document.evaluate("//span[text()=' followers']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        let followingElement = document.evaluate("//span[text()=' following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if (usersToFollow.includes(currentUserPage) == false) {
             if (messageElement != null) {
-                messageElement.innerText = " - ?/" + String(usersToFollowLength);
+                messageElement.innerText = "?/" + String(usersToFollowLength);
+            }
+            if (postsElement != null) {
+                postsElement.innerText = "?/" + String(usersToFollowLength);
+            }
+            if (followersElement != null) {
+                followersElement.innerText = "?/" + String(usersToFollowLength);
+            }
+            if (followingElement != null) {
+                followingElement.innerText = "?/" + String(usersToFollowLength);
             }
             console.log("Editando título");
             document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
@@ -7280,7 +7292,16 @@ function main() {
                 let currentUser = usersToFollow[i];
                 if (currentUserPage == currentUser) {
                     if (messageElement != null) {
-                        messageElement.innerText = String(i+1) + "/" + String(usersToFollowLength);
+                        messageElement.innerText = String(parseInt(i)+1) + "/" + String(usersToFollowLength);
+                    }
+                    if (postsElement != null) {
+                        postsElement.innerText = String(parseInt(i)+1) + "/" + String(usersToFollowLength);
+                    }
+                    if (followersElement != null) {
+                        followersElement.innerText = String(parseInt(i)+1) + "/" + String(usersToFollowLength);
+                    }
+                    if (followingElement != null) {
+                        followingElement.innerText = String(parseInt(i)+1) + "/" + String(usersToFollowLength);
                     }
                     console.log("Editando título");
                     document.title = currentUserPage + " - " + String(parseInt(i)+1) + "/" + String(usersToFollowLength);
