@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.37
+// @version      0.38
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7269,7 +7269,7 @@ function main() {
             }
         }
     } else {
-        let usersToFollowLength = usersToFollow.length();
+        let usersToFollowLength = usersToFollow.length;
         let messageElement = document.evaluate("//div[text()='Message']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if (usersToFollow.includes(currentUserPage) == false) {
             document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
