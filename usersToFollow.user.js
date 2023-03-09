@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.33
+// @version      0.36
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -17,7 +17,7 @@ function getCurrentURL() {
 }
 
 function getListOfUsers() {
-const data = `zoepnzani_
+    const data = `zoepnzani_
 _ceci4
 maiochoaizpuro
 ilianagrillo
@@ -7222,33 +7222,10 @@ function esHoraEspecial(h, m) {
     let minutes = String(m);
     let momentoActual = hours + minutes;
     let momentosEspeciales = [];
-    if (seconds == 0) {
-        return momentosEspeciales.includes(momentoActual);
-    } return false;
-}
-    
-function main2() {
-    let date = new Date;
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
-    if (seconds == 0 && ((minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
-        let usersToFollow = getListOfUsers();
-        if (usersToFollow.includes(currentUserPage) == false) {
-            window.location.href = "https://www.instagram.com/" + usersToFollow[0];
-        }
-        for (let i in usersToFollow) {
-            let currentUser = usersToFollow[i];
-            if (currentUserPage == currentUser) {
-                window.location.href = "https://www.instagram.com/" + usersToFollow[parseInt(i) + 1];
-            }
-        }
-    }
+    return momentosEspeciales.includes(momentoActual);
 }
 
 function waitTillPageLoad() {
-    // console.log("waitTillPageLoad");
     waitTillPageLoadCounter += 1;
     if (waitTillPageLoadCounter == 999999) {
         location.reload();
@@ -7272,9 +7249,7 @@ function waitTillPageLoad() {
 }
 
 function main() {
-    // console.log("main");
     clearInterval(intervalWaitTillPageLoad);
-    // console.log("• Followeando");
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     let followingElement = document.evaluate("//div[text()='Following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -7299,15 +7274,16 @@ function main() {
         if (usersToFollow.includes(currentUserPage) == false) {
             document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
             if (messageElement != null) {
-               messageElement.innerText = currentUserPage + " - ?/" + String(usersToFollowLength);
+                messageElement.innerText = currentUserPage + " - ?/" + String(usersToFollowLength);
             }
         } else {
             for (let i in usersToFollow) {
-            let currentUser = usersToFollow[i];
-            if (currentUserPage == currentUser) {
-                document.title = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
-                if (messageElement != null) {
-                    messageElement.innerText = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                let currentUser = usersToFollow[i];
+                if (currentUserPage == currentUser) {
+                    document.title = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                    if (messageElement != null) {
+                        messageElement.innerText = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                    }
                 }
             }
         }
@@ -7315,8 +7291,25 @@ function main() {
     }
 }
 
+function main2() {
+    let date = new Date;
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
+    if (seconds == 0 && ((minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
+        let usersToFollow = getListOfUsers();
+        if (usersToFollow.includes(currentUserPage) == false) {
+            window.location.href = "https://www.instagram.com/" + usersToFollow[0];
+        }
+        for (let i in usersToFollow) {
+            let currentUser = usersToFollow[i];
+            if (currentUserPage == currentUser) {
+                window.location.href = "https://www.instagram.com/" + usersToFollow[parseInt(i) + 1];
+            }
+        }
+    }
+}
+
 let waitTillPageLoadCounter = 0;
 const intervalWaitTillPageLoad = setInterval(waitTillPageLoad, 1000);
-
-
-
