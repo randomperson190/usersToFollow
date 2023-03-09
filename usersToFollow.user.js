@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.46
+// @version      0.47
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7251,11 +7251,13 @@ function main() {
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     let followingElement = document.evaluate("//div[text()='Following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (followElement != null) {
-        // followElement.click();
-    }
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
     let usersToFollow = getListOfUsers();
+    if (followElement != null) {
+        if (usersToFollow.includes(currentUserPage)) {
+            followElement.click();
+        }
+    }
     if (followingElement != null || requestedElement != null) {
         if (usersToFollow.includes(currentUserPage) == false) {
             window.location.href = "https://www.instagram.com/" + usersToFollow[0];
