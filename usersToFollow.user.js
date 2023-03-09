@@ -1,15 +1,13 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.38
+// @version      0.39
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
 // @downloadURL  https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
 // @match        https://www.instagram.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=instagram.com
-// @grant        GM_addElement
-// @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
 function getCurrentURL() {
@@ -7272,18 +7270,18 @@ function main() {
         let usersToFollowLength = usersToFollow.length;
         let messageElement = document.evaluate("//div[text()='Message']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if (usersToFollow.includes(currentUserPage) == false) {
-            document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
             if (messageElement != null) {
-                messageElement.innerText = currentUserPage + " - ?/" + String(usersToFollowLength);
+                messageElement.innerText = " - ?/" + String(usersToFollowLength);
             }
+            document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
         } else {
             for (let i in usersToFollow) {
                 let currentUser = usersToFollow[i];
                 if (currentUserPage == currentUser) {
-                    document.title = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
                     if (messageElement != null) {
-                        messageElement.innerText = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                        messageElement.innerText = String(i+1) + "/" + String(usersToFollowLength);
                     }
+                    document.title = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
                 }
             }
         }
