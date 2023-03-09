@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.39
+// @version      0.41
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7252,7 +7252,7 @@ function main() {
     let followingElement = document.evaluate("//div[text()='Following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (followElement != null) {
-        followElement.click();
+        // followElement.click();
     }
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
     let usersToFollow = getListOfUsers();
@@ -7273,6 +7273,7 @@ function main() {
             if (messageElement != null) {
                 messageElement.innerText = " - ?/" + String(usersToFollowLength);
             }
+            console.log("Editando título");
             document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
         } else {
             for (let i in usersToFollow) {
@@ -7281,7 +7282,8 @@ function main() {
                     if (messageElement != null) {
                         messageElement.innerText = String(i+1) + "/" + String(usersToFollowLength);
                     }
-                    document.title = currentUserPage + " - " + String(i+1) + "/" + String(usersToFollowLength);
+                    console.log("Editando título");
+                    document.title = currentUserPage + " - " + String(parseInt(i)+1) + "/" + String(usersToFollowLength);
                 }
             }
         }
