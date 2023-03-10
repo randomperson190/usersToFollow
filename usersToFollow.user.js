@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.47
+// @version      0.49
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7253,7 +7253,7 @@ function main() {
     let requestedElement = document.evaluate("//div[text()='Requested']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "");
     let usersToFollow = getListOfUsers();
-    if (followElement != null) {
+    if (followingElement == null && requestedElement == null && followElement != null) {
         if (usersToFollow.includes(currentUserPage)) {
             followElement.click();
         }
@@ -7274,6 +7274,8 @@ function main() {
         let postsElement = document.evaluate("//div[text()=' posts']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         let followersElement = document.evaluate("//div[text()=' followers']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         let followingElement = document.evaluate("//div[text()=' following']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        let usernameTopElement = document.evaluate("//h1[text()='" + currentUserPage + "']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        let usernameMainElement = document.evaluate("//h2[text()='" + currentUserPage + "']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if (usersToFollow.includes(currentUserPage) == false) {
             if (messageElement != null) {
                 messageElement.innerText = "?/" + String(usersToFollowLength);
@@ -7287,10 +7289,16 @@ function main() {
             if (followingElement != null) {
                 followingElement.innerText = "?/" + String(usersToFollowLength);
             }
+            if (usernameTopElement != null) {
+                usernameTopElement.innerText = usernameTopElement.innerText + " - ?/" + String(usersToFollowLength);
+            }
+            if (usernameMainElement != null) {
+                usernameMainElement.innerText = usernameMainElement.innerText + " - ?/" + String(usersToFollowLength);
+            }
             document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
             setTimeout(() => {
                 document.title = currentUserPage + " - ?/" + String(usersToFollowLength);
-            }, 3000);
+            }, 10000);
         } else {
             for (let i in usersToFollow) {
                 let currentUser = usersToFollow[i];
@@ -7307,10 +7315,16 @@ function main() {
                     if (followingElement != null) {
                         followingElement.innerText = String(parseInt(i)+1) + "/" + String(usersToFollowLength);
                     }
+                    if (usernameTopElement != null) {
+                        usernameTopElement.innerText = usernameTopElement.innerText + " - " + String(parseInt(i)+1) + "/" + String(usersToFollowLength);
+                    }
+                    if (usernameMainElement != null) {
+                        usernameMainElement.innerText = usernameMainElement.innerText + " - " + String(parseInt(i)+1) + "/" + String(usersToFollowLength);
+                    }
                     document.title = currentUserPage + " - " + String(parseInt(i)+1) + "/" + String(usersToFollowLength);
                     setTimeout(() => {
                         document.title = currentUserPage + " - " + String(parseInt(i)+1) + "/" + String(usersToFollowLength);
-                    }, 3000);
+                    }, 10000);
                 }
             }
         }
