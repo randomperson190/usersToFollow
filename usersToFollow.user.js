@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.54
+// @version      0.55
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -7361,7 +7361,7 @@ function main2() {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "").replaceAll("?hl=es", "");;
-    if (seconds == 0 && ((minutes == 0 || minutes == 30) || esHoraEspecial(hours, minutes))) {
+    if (seconds == 0 && ((minutes == 0 || minutes == 30 || minutes == 00 || minutes == 00) || esHoraEspecial(hours, minutes))) {
         let usersToFollow = getListOfUsers();
         if (usersToFollow.includes(currentUserPage) == false) {
             window.location.href = "https://www.instagram.com/" + usersToFollow[0];
