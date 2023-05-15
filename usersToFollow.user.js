@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.58
+// @version      0.59
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -19,7 +19,9 @@ GM_setValue("someKey", "someValue");
 GM_getValue("someKey", "someValue");
 */
 
+console.log("===============");
 console.log(data);
+console.log("===============");
 
 function getCurrentURL() {
     return window.location.href;
