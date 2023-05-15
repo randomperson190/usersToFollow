@@ -6,6 +6,7 @@
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
 // @downloadURL  https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
+// @resource data https://raw.githubusercontent.com/randomperson190/usersToFollow/main/usersToFollow.txt
 // @match        https://www.instagram.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=instagram.com
 // @grant        GM_xmlhttpRequest
