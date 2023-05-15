@@ -19,6 +19,8 @@ GM_setValue("someKey", "someValue");
 GM_getValue("someKey", "someValue");
 */
 
+console.log(data);
+
 function getCurrentURL() {
     return window.location.href;
 }
