@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.66
+// @version      0.67
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -86,11 +86,15 @@ function main() {
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "").replaceAll("?hl=es", "");
     let usersToFollow = getListOfUsers();
     let date = new Date;
+    console.log("main");
+    /*
+    // ::: Causa error lo siguiente :::
     GM_notification({
         silent: true,
         title: "Último user abierto",
         text: date.getHours() + ":" + date.getMinutes(),
     });
+    */
     if (followingElement == null && requestedElement == null && followElement != null) {
         if (usersToFollow.includes(currentUserPage)) {
             followElement.click();
@@ -176,6 +180,7 @@ function main2() {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "").replaceAll("?hl=es", "");;
+    console.log("main2");
     if (seconds == 0 && ((minutes == 0 || minutes == 0 || minutes == 0 || minutes == 30 || minutes == 0 || minutes == 0 || minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
         let usersToFollow = getListOfUsers();
         if (usersToFollow.includes(currentUserPage) == false) {
