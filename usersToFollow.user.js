@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.67
+// @version      0.68
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
 // @downloadURL  https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
 // @resource usersToFollow https://raw.githubusercontent.com/randomperson190/usersToFollow/main/usersToFollow.txt
+// @resource timing https://raw.githubusercontent.com/randomperson190/usersToFollow/main/timing.txt
 // @match        https://www.instagram.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=instagram.com
 // @grant        GM_xmlhttpRequest
@@ -26,6 +27,11 @@ function getCurrentURL() {
 
 function getListOfUsers() {
     const data = GM_getResourceText("usersToFollow");
+    return data.split("\n");
+}
+
+function getTimings() {
+    const data = GM_getResourceText("timing");
     return data.split("\n");
 }
 
@@ -180,8 +186,9 @@ function main2() {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "").replaceAll("?hl=es", "");;
+    let timings = getTimings();
     console.log("main2");
-    if (seconds == 0 && ((minutes == 0 || minutes == 0 || minutes == 0 || minutes == 30 || minutes == 0 || minutes == 0 || minutes == 0 || minutes == 0) || esHoraEspecial(hours, minutes))) {
+    if (seconds == 0 && ((minutes == parseInt(timings[0]) || minutes == parseInt(timings[1]) || minutes == parseInt(timings[2]) || minutes == parseInt(timings[3]) || minutes == parseInt(timings[4]) || minutes == parseInt(timings[5]) || minutes == parseInt(timings[6]) || minutes == parseInt(timings[7]) || minutes == parseInt(timings[8]) || minutes == parseInt(timings[9])) || esHoraEspecial(hours, minutes))) {
         let usersToFollow = getListOfUsers();
         if (usersToFollow.includes(currentUserPage) == false) {
             window.location.href = "https://www.instagram.com/" + usersToFollow[0];
