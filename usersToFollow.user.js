@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.69
+// @version      0.70
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -188,6 +188,12 @@ function main2() {
     let currentUserPage = getCurrentURL().replaceAll("https://www.instagram.com/", "").replaceAll("/", "").replaceAll(" ", "").replaceAll("%20", "").replaceAll("?hl=en", "").replaceAll("?hl=es", "");;
     let timings = getTimings();
     console.log("main2");
+    console.log(parseInt((timings[0])));
+    console.log(parseInt((timings[1])));
+    console.log(parseInt((timings[2])));
+    console.log(parseInt((timings[3])));
+    console.log(parseInt((timings[4])));
+    console.log(parseInt((timings[5])));
     if (seconds == 0 && ((minutes == parseInt(timings[0]) || minutes == parseInt(timings[1]) || minutes == parseInt(timings[2]) || minutes == parseInt(timings[3]) || minutes == parseInt(timings[4]) || minutes == parseInt(timings[5]) || minutes == parseInt(timings[6]) || minutes == parseInt(timings[7]) || minutes == parseInt(timings[8]) || minutes == parseInt(timings[9])) || esHoraEspecial(hours, minutes))) {
         let usersToFollow = getListOfUsers();
         if (usersToFollow.includes(currentUserPage) == false) {
