@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Instagram AutoFollow
 // @namespace    http://tampermonkey.net/
-// @version      0.70
+// @version      0.71
 // @description  try to take over the world!
 // @author       You
 // @updateURL    https://github.com/randomperson190/usersToFollow/raw/main/usersToFollow.user.js
@@ -48,8 +48,8 @@ function esHoraEspecial(h, m) {
 
 function waitTillPageLoad() {
     waitTillPageLoadCounter += 1;
-    if (waitTillPageLoadCounter == 999999) {
-        location.reload();
+    if (waitTillPageLoadCounter == 3600) {
+        location.reload(); // A la hora se hace una recarga
     }
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (followElement != null) {
