@@ -48,8 +48,8 @@ function esHoraEspecial(h, m) {
 
 function waitTillPageLoad() {
     waitTillPageLoadCounter += 1;
-    if (waitTillPageLoadCounter == 3600) {
-        location.reload(); // A la hora se hace una recarga
+    if (waitTillPageLoadCounter == 3600) { // A la hora se hace una recarga por las dudas que quede trabado
+        location.reload();
     }
     let followElement = document.evaluate("//div[text()='Follow']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (followElement != null) {
